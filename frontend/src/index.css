@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  --color-medical-teal: #0ea5e9;
+  --color-clinical-navy: #0f172a;
+  --color-accent-purple: #818cf8;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2.5rem;
+  --radius-3xl: 4rem;
+}
+
+:root {
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  background-color: #f8fafc;
+}
+
+body {
+  margin: 0;
+  color: #1e293b;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Bento Grid Utilities */
+.bento-card {
+  @apply bg-white border border-slate-200/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2.5rem] p-8 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] hover:-translate-y-1 overflow-hidden relative;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Innovative Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(0.98); }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+/* Scrollbar styling for a cleaner look */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}
+
+* {
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
