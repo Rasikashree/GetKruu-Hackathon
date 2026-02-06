@@ -15,7 +15,8 @@ This guide will help you capture screenshots for the README.md file.
      - Daily check-in form or report analysis
      - Clinical monitor with vitals
      - File upload section
-  4. Save as `screenshots/dashboard.png`
+  4. Save as <img width="1854" height="670" alt="image" src="https://github.com/user-attachments/assets/3051a602-ca6c-4012-a3e3-0de712c52d4d" />
+
 
 ### 2. Predictive Analytics (`predictive-analytics.png`)
 - **What to capture**: The Predictive Analytics component
@@ -26,7 +27,8 @@ This guide will help you capture screenshots for the README.md file.
      - Complication Risk
      - Recovery Index
   3. Include the 7-Day Pain Forecast chart
-  4. Save as `screenshots/predictive-analytics.png`
+  4. Save as <img width="1846" height="573" alt="image" src="https://github.com/user-attachments/assets/ccfe0ebf-3a79-49ef-8c11-99f01d05ab7b" />
+`
 
 ### 3. Clinical Monitor (`clinical-monitor.png`)
 - **What to capture**: The Clinical Status card
@@ -37,7 +39,8 @@ This guide will help you capture screenshots for the README.md file.
      - Next milestone progress bar
      - Active monitoring alerts
      - System status footer
-  3. Save as `screenshots/clinical-monitor.png`
+  3. Save as <img width="1803" height="853" alt="image" src="https://github.com/user-attachments/assets/f56c49ea-9cf7-4efb-a724-43e114fe2dca" />
+
 
 ### 4. Health Forecast (`health-forecast.png`)
 - **What to capture**: Recovery Forecast component
@@ -47,7 +50,8 @@ This guide will help you capture screenshots for the README.md file.
      - Milestone tracker (Pain Management, Mobility, Full Recovery)
      - Days until full recovery
      - Predictions for tomorrow and next week
-  3. Save as `screenshots/health-forecast.png`
+  3. Save as <img width="861" height="809" alt="image" src="https://github.com/user-attachments/assets/2dce21b7-9ad6-4a9f-87a7-559158b836da" />
+
 
 ### 5. Risk Assessment (`risk-assessment.png`)
 - **What to capture**: Risk Assessment component
@@ -57,7 +61,8 @@ This guide will help you capture screenshots for the README.md file.
      - Risk score gauge (0-100)
      - Risk factors list
      - Protective factors
-  3. Save as `screenshots/risk-assessment.png`
+  3. Save as <img width="784" height="742" alt="image" src="https://github.com/user-attachments/assets/261362c3-19e6-4b4c-86c7-b28ef6f98e45" />
+
 
 ### 6. Medical Report Upload (`report-upload.png`)
 - **What to capture**: Clinical Reports section
@@ -68,7 +73,8 @@ This guide will help you capture screenshots for the README.md file.
      - "UPLOAD LAB REPORT" button
      - Report count in header
   3. Optionally: Show the upload in action or result
-  4. Save as `screenshots/report-upload.png`
+  4. Save as <img width="430" height="636" alt="image" src="https://github.com/user-attachments/assets/ffe587ae-8727-4950-b98e-8fbc08fe6772" />
+
 
 ## Screenshot Tips
 
