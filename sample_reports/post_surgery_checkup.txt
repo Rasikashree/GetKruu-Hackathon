@@ -1,0 +1,94 @@
+╔══════════════════════════════════════════════════════════════╗
+║          POST-OPERATIVE ASSESSMENT REPORT                    ║
+║          General Hospital - Surgery Department               ║
+╚══════════════════════════════════════════════════════════════╝
+
+Patient Name: Ashmitha B
+Patient ID: ASH-2026-001
+Surgery Date: January 28, 2026
+Follow-up Visit: February 6, 2026 (Day 9 Post-Op)
+Attending Physician: Dr. Michael Chen, MD, FACS
+
+VITAL SIGNS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Temperature: 37.5°C
+Blood Pressure: 122/78 mmHg
+Heart Rate: 85 bpm
+Respiratory Rate: 14 breaths/min
+Oxygen Saturation: 97% (Room Air)
+Weight: 68 kg
+Pain Level: 3/10 (well-controlled on current regimen)
+
+SURGICAL SITE EXAMINATION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Incision: Clean, dry, and intact
+Healing: Primary intention, no dehiscence
+Drainage: None
+Redness: Minimal, normal for healing phase
+Swelling: Mild, decreasing since last visit
+Warmth: Normal skin temperature
+Staples/Sutures: Intact, removal scheduled for Day 14
+
+PAIN ASSESSMENT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Current Pain Score: 3/10
+Pain Type: Mild incisional discomfort
+Pain Management: Acetaminophen 500mg PRN
+Pain Trend: Decreasing daily
+Sleep Impact: Minimal disturbance
+
+FUNCTIONAL STATUS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Mobility: Ambulating independently
+Activity Level: Medium (increased from Low)
+Range of Motion: 75% of baseline (improving)
+Self-Care: Independent with all ADLs
+Appetite: Good, tolerating regular diet
+Sleep Pattern: 6-7 hours nightly
+
+CURRENT MEDICATIONS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Acetaminophen 500mg PO Q6H PRN pain
+• Multivitamin daily
+• Stool softener as needed
+
+ASSESSMENT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✓ Excellent post-operative recovery progress
+✓ Surgical site healing appropriately - no infection signs
+✓ Pain well-controlled with minimal medication
+✓ Patient compliance with post-op instructions excellent
+✓ No complications: No fever, no wound infection, no bleeding
+✓ Vital signs stable and within normal limits
+✓ Activity level progressing as expected
+
+PLAN:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Continue current pain management regimen
+2. Gradual increase in activity - start light walking 15-20 min daily
+3. Wound care: Keep incision clean and dry, no bathing until Day 14
+4. Suture removal scheduled: February 11, 2026
+5. Return to clinic if: Fever >38.5°C, increased pain, drainage, redness
+6. Next follow-up appointment: February 20, 2026
+7. Cleared for return to desk work on February 13, 2026
+8. No heavy lifting (>10 lbs) until 6 weeks post-op
+
+PATIENT EDUCATION PROVIDED:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✓ Warning signs of infection discussed
+✓ Activity restrictions reviewed
+✓ Pain management strategy explained
+✓ Wound care instructions reinforced
+✓ Follow-up schedule confirmed
+
+Patient demonstrates understanding and verbalizes no concerns.
+
+Recovery Prognosis: Excellent
+Expected Full Recovery Timeline: 4-6 weeks
+
+Provider: Dr. Michael Chen, MD, FACS
+Nurse: Jennifer Williams, RN, BSN
+Report Status: FINAL
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+This is a confidential medical document. Unauthorized distribution prohibited.

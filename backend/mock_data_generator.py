@@ -9,30 +9,40 @@ db = client.recovery_db
 collection = db.metrics
 
 async def generate_mock_data():
-    print("Generating clinical mock data...")
-    # Clear existing data for a fresh start
-    await collection.delete_many({})
+    print("Generating clinical mock data for user 'ashmi'...")
+    # Clear existing data for ashmi
+    await collection.delete_many({"user_id": "ashmi"})
     
-    base_time = datetime.now() - timedelta(days=2)
+    base_time = datetime.now() - timedelta(days=10)
     entries = []
     
-    # Generate 48 hours of data (one entry every 4 hours)
-    for i in range(12):
-        time_point = base_time + timedelta(hours=i*4)
-        timestamp = time_point.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
+    # Generate 10 days of recovery data
+    base_pain = 8
+    base_activity = 3
+    
+    for i in range(10):
+        time_point = base_time + timedelta(days=i)
+        timestamp = time_point.isoformat()
         
-        # Simulate a normal recovery trend
+        # Simulate recovery: pain decreases, activity increases
+        pain = max(2, base_pain - (i * 0.6))
+        activity = min(9, base_activity + (i * 0.6))
+        hr = 85 - (i * 1.5)
+        temp = 37.5 - (i * 0.05)
+        
         entry = {
+            "user_id": "ashmi",
             "timestamp": timestamp,
-            "pain_level": max(2, 6 - (i // 2)), # Pain decreasing over time
-            "temperature": round(random.uniform(36.6, 37.2), 1),
-            "heart_rate": random.randint(70, 85),
-            "activity_level": "Medium" if i > 6 else "Low"
+            "pain_level": int(pain),
+            "temperature": round(temp, 1),
+            "heart_rate": int(hr),
+            "activity_level": str(int(activity))
         }
         entries.append(entry)
+        print(f"Day {i+1}: Pain={int(pain)}, Activity={int(activity)}, HR={int(hr)}, Temp={round(temp,1)}")
     
     await collection.insert_many(entries)
-    print(f"Successfully injected {len(entries)} clinical data points into MongoDB.")
+    print(f"\n✓ Successfully inserted {len(entries)} entries for user 'ashmi'")
 
 if __name__ == "__main__":
     asyncio.run(generate_mock_data())

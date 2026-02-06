@@ -1,0 +1,59 @@
+╔══════════════════════════════════════════════════════════════╗
+║          MEDICAL LABORATORY REPORT                           ║
+║          General Hospital - Clinical Lab                     ║
+╚══════════════════════════════════════════════════════════════╝
+
+Patient Name: Ashmitha B
+Patient ID: ASH-2026-001
+Date: February 6, 2026
+Time: 09:30 AM
+
+VITAL SIGNS DURING COLLECTION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Temperature: 37.2°C
+Blood Pressure: 120/80 mmHg
+Heart Rate: 78 bpm
+Oxygen Saturation (SpO2): 98%
+Pain Level: 2/10
+
+COMPLETE BLOOD COUNT (CBC):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+White Blood Cells (WBC): 7.5 x10³/µL (Normal: 4.5-11.0)
+Red Blood Cells (RBC): 4.8 x10⁶/µL (Normal: 4.5-5.9)
+Hemoglobin: 14.2 g/dL (Normal: 13.5-17.5)
+Hematocrit: 42% (Normal: 38.8-50.0)
+Platelets: 250 x10³/µL (Normal: 150-400)
+
+METABOLIC PANEL:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Glucose: 95 mg/dL (Normal: 70-100)
+Creatinine: 1.0 mg/dL (Normal: 0.7-1.3)
+Blood Urea Nitrogen (BUN): 15 mg/dL (Normal: 7-20)
+
+INFLAMMATORY MARKERS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+C-Reactive Protein (CRP): 2.1 mg/L (Normal: <3.0)
+Erythrocyte Sedimentation Rate: 12 mm/hr (Normal: 0-20)
+
+CLINICAL INTERPRETATION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✓ All parameters within normal post-surgical range
+✓ No signs of infection or inflammation
+✓ WBC count stable, indicating good immune response
+✓ Hemoglobin levels normal - adequate oxygen carrying capacity
+✓ Inflammatory markers (CRP) within acceptable limits
+✓ Metabolic function stable
+
+RECOMMENDATIONS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Continue current medication regimen
+• Maintain adequate hydration
+• Follow-up in 2 weeks
+• Monitor for any fever or increased pain
+
+Reviewed by: Dr. Sarah Mitchell, MD
+Lab Technician: John Davis, MLT
+Report Status: FINAL
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+This is a confidential medical document. Unauthorized distribution prohibited.

@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
 import MetricLogForm from './components/MetricLogForm';
-import TrendChart from './components/TrendChart';
+import PredictiveAnalytics from './components/PredictiveAnalytics';
 import StatusCard from './components/StatusCard';
+import ReportAnalysisDisplay from './components/ReportAnalysisDisplay';
+import ClinicalMonitor from './components/ClinicalMonitor';
+import HealthForecast from './components/HealthForecast';
+import RiskAssessment from './components/RiskAssessment';
 import { Activity, Bell, History, Sparkles, PhoneCall, LayoutDashboard, Calendar, Search, User, ShieldCheck } from 'lucide-react';
 
 interface MetricEntry {
@@ -125,6 +129,79 @@ function App() {
   const [healthScore, setHealthScore] = useState(94);
   const [reports, setReports] = useState<any[]>([]);
   const [uploading, setUploading] = useState(false);
+  const [latestReport, setLatestReport] = useState<any>(null);
+  const [aiInsights, setAiInsights] = useState<any>(null);
+
+  // Load historical data and reports when user logs in
+  useEffect(() => {
+    if (user) {
+      loadUserData();
+    }
+  }, [user]);
+
+  const loadUserData = async () => {
+    try {
+      // Load metric history
+      const historyResponse = await fetch(`http://localhost:8000/history/${user.username}`);
+      if (historyResponse.ok) {
+        const history = await historyResponse.json();
+        
+        // Convert backend data to frontend format
+        const formattedEntries = history.map((item: any) => ({
+          date: new Date(item.timestamp).toLocaleDateString(),
+          pain: item.pain_level,
+          heartRate: item.heart_rate,
+          activity: parseInt(item.activity_level)
+        }));
+        
+        setEntries(formattedEntries);
+        
+        // Get latest AI insights if we have data
+        if (history.length > 0) {
+          const analyzeResponse = await fetch('http://localhost:8000/analyze', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              user_id: user.username,
+              timestamp: new Date().toISOString(),
+              pain_level: history[history.length - 1].pain_level,
+              temperature: history[history.length - 1].temperature,
+              heart_rate: history[history.length - 1].heart_rate,
+              activity_level: history[history.length - 1].activity_level
+            })
+          });
+          
+          if (analyzeResponse.ok) {
+            const result = await analyzeResponse.json();
+            if (result.ai_insights) {
+              setAiInsights(result.ai_insights);
+              if (result.ai_insights.recovery_score) {
+                setHealthScore(result.ai_insights.recovery_score);
+              }
+            }
+          }
+        }
+      }
+
+      // Load reports
+      const reportsResponse = await fetch(`http://localhost:8000/reports/${user.username}`);
+      if (reportsResponse.ok) {
+        const userReports = await reportsResponse.json();
+        setReports(userReports);
+      }
+
+      // Load active alerts
+      const alertsResponse = await fetch(`http://localhost:8000/alerts/${user.username}`);
+      if (alertsResponse.ok) {
+        const activeAlerts = await alertsResponse.json();
+        if (activeAlerts.length > 0) {
+          setAlerts(activeAlerts.map((a: any) => a.message));
+        }
+      }
+    } catch (error) {
+      console.error('Failed to load user data:', error);
+    }
+  };
 
   const handleLog = async (newEntry: MetricEntry) => {
     try {
@@ -142,14 +219,24 @@ function App() {
       setStatus(result.status);
       setReason(result.reason);
       
+      // Store AI insights
+      if (result.ai_insights) {
+        setAiInsights(result.ai_insights);
+      }
+      
       if (result.alert_provider) {
         setAlerts(prev => [`CRITICAL ALERT: ${result.reason}`, ...prev].slice(0, 5));
       }
       
-      let newScore = 94;
-      if (result.status === 'Critical') newScore = 45;
-      else if (result.status === 'Warning') newScore = 72;
-      setHealthScore(newScore);
+      // Update health score based on AI recovery score
+      if (result.ai_insights?.recovery_score) {
+        setHealthScore(result.ai_insights.recovery_score);
+      } else {
+        let newScore = 94;
+        if (result.status === 'Critical') newScore = 45;
+        else if (result.status === 'Warning') newScore = 72;
+        setHealthScore(newScore);
+      }
 
     } catch (error) {
       console.error('Failed to sync with clinical engine:', error);
@@ -176,10 +263,19 @@ function App() {
           })
         });
         const result = await response.json();
-        alert(`AI Analysis: ${result.analysis}`);
+        
+        // Set latest report for display
+        setLatestReport({
+          filename: file.name,
+          analysis: result.analysis,
+          extracted_data: result.extracted_data,
+          timestamp: new Date().toISOString()
+        });
+        
         fetchReports();
       } catch (err) {
         console.error('Upload failed:', err);
+        alert('Failed to upload report. Please try again.');
       } finally {
         setUploading(false);
       }
@@ -193,6 +289,11 @@ function App() {
       const res = await fetch(`http://localhost:8000/reports/${user.username}`);
       const data = await res.json();
       setReports(data);
+      
+      // Set the most recent report as latest
+      if (data.length > 0) {
+        setLatestReport(data[0]);
+      }
     } catch (err) {
       console.error(err);
     }
@@ -209,6 +310,21 @@ function App() {
     setHealthScore(94);
     setAlerts([]);
   };
+
+  const activityToHeight = (level: string) => {
+    switch (level) {
+      case 'High':
+        return 1;
+      case 'Medium':
+        return 0.6;
+      case 'Low':
+      default:
+        return 0.3;
+    }
+  };
+
+  const activityHeights = entries.slice(-7).map((entry) => activityToHeight(entry.activity_level));
+  const activityBars = activityHeights.length > 0 ? activityHeights : Array(7).fill(0.12);
 
   useEffect(() => {
     if (!user) return;
@@ -310,30 +426,21 @@ function App() {
           {/* Main Status Hero (Full Width Top) */}
           <StatusCard status={status} reason={reason} score={healthScore} />
 
-          {/* Activity Bento */}
-          <div className="bento-card group flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between mb-8">
-                <h3 className="text-xs font-black text-slate-400 uppercase tracking-[0.3em]">Telemetry Activity</h3>
-                <Activity size={18} className="text-medical-teal animate-pulse-soft" />
-              </div>
-              <div className="flex items-baseline gap-2">
-                <span className="text-4xl font-black text-slate-900">{entries.length}</span>
-                <span className="text-xs font-bold text-slate-400 uppercase">Synchronized Points</span>
-              </div>
-            </div>
-            <div className="mt-8 flex gap-2">
-              {[1, 0.6, 0.4, 0.8, 1, 0.5, 0.9].map((h, i) => (
-                <div key={i} className="flex-1 bg-slate-100 rounded-full h-12 relative overflow-hidden">
-                  <div className="absolute bottom-0 left-0 w-full bg-medical-teal/40 rounded-full transition-all duration-1000" style={{ height: `${h * 100}%` }} />
-                </div>
-              ))}
-            </div>
+          {/* Risk Assessment */}
+          <RiskAssessment insights={aiInsights} entries={entries} />
+
+          {/* Interactive Metric Form or Report Analysis */}
+          <div className="lg:col-span-2 row-span-2">
+            {latestReport ? (
+              <ReportAnalysisDisplay reportData={latestReport} />
+            ) : (
+              <MetricLogForm onLog={handleLog} />
+            )}
           </div>
 
-          {/* Interactive Metric Form */}
-          <div className="lg:col-span-2 row-span-2">
-            <MetricLogForm onLog={handleLog} />
+          {/* Clinical Monitor Card */}
+          <div className="row-span-2">
+            <ClinicalMonitor entries={entries} insights={aiInsights} />
           </div>
 
           {/* Clinical Documents Bento */}
@@ -371,10 +478,11 @@ function App() {
             </div>
           </div>
 
-          {/* Trend Chart (Large Area) */}
-          <div className="lg:col-span-2" id="vital-trends">
-            <TrendChart data={entries} />
-          </div>
+          {/* Health Forecast - Positioned below file upload */}
+          <HealthForecast insights={aiInsights} entries={entries} />
+
+          {/* Predictive Analytics (Large Area) */}
+          <PredictiveAnalytics entries={entries} insights={aiInsights} />
 
           {/* Alerts / Notifications Bento */}
           <div className="bento-card col-span-1 md:col-span-2 lg:col-span-4 flex flex-col md:flex-row gap-10 items-center justify-between min-h-[160px]">

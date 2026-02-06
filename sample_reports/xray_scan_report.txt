@@ -1,0 +1,72 @@
+╔══════════════════════════════════════════════════════════════╗
+║          RADIOLOGY IMAGING REPORT                            ║
+║          General Hospital - Imaging Department               ║
+╚══════════════════════════════════════════════════════════════╝
+
+Patient Name: Ashmitha B
+Patient ID: ASH-2026-001
+Exam: Chest X-Ray (PA & Lateral)
+Date: February 6, 2026
+Time: 14:45 PM
+
+VITAL SIGNS AT TIME OF IMAGING:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Temperature: 36.8°C
+Heart Rate: 82 bpm
+Blood Pressure: 118/76 mmHg
+Oxygen Saturation: 98%
+Respiratory Rate: 16 breaths/min
+Pain Level: 3/10
+
+CLINICAL INDICATION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Post-operative follow-up, routine chest imaging
+
+TECHNIQUE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PA and lateral chest radiographs acquired digitally
+
+FINDINGS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LUNGS: Clear bilaterally. No focal consolidation, effusion, or 
+pneumothorax. No acute infiltrates identified.
+
+HEART: Normal cardiac silhouette. Cardiothoracic ratio within 
+normal limits.
+
+MEDIASTINUM: No mediastinal widening. Trachea midline.
+
+OSSEOUS STRUCTURES: No acute fracture or dislocation. Visualized 
+bones show normal density and alignment.
+
+SOFT TISSUES: Unremarkable. Surgical site healing well with no 
+abnormal fluid collections.
+
+IMPRESSION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. No acute cardiopulmonary abnormality
+2. Clear lung fields bilaterally
+3. Normal cardiac silhouette
+4. Healing progressing as expected post-operatively
+5. No signs of complications
+
+CLINICAL CORRELATION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✓ Excellent post-operative recovery progress
+✓ No respiratory complications detected
+✓ Surgical healing on track
+✓ No fluid accumulation or infection markers
+
+RECOMMENDATIONS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Continue current recovery protocol
+• Gradual increase in physical activity as tolerated
+• Follow-up imaging not required unless symptoms develop
+• Report any breathing difficulties immediately
+
+Radiologist: Dr. James Anderson, MD, FACR
+Technologist: Maria Rodriguez, RT(R)
+Report Status: FINAL - Electronically Signed
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+This is a confidential medical document. Unauthorized distribution prohibited.
