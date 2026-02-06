@@ -136,13 +136,3 @@ This guide will help you capture screenshots for the README.md file.
    git commit -m "Add application screenshots"
    git push
    ```
-
-## Alternative: Use Placeholder Images
-
-If screenshots are not immediately available, you can use placeholder services:
-- https://via.placeholder.com/1200x800/14b8a6/ffffff?text=Dashboard
-- Replace URLs in README.md temporarily
-
----
-
-**Note**: Screenshots should showcase the application's features and user interface clearly for potential users and contributors viewing the GitHub repository.
