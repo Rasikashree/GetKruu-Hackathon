@@ -21,32 +21,39 @@ An intelligent healthcare monitoring system that tracks daily recovery metrics u
 - **Medical Report Analysis**: AI extraction of vitals from uploaded lab reports
 - **Risk Assessment**: Dynamic risk scoring with identified factors
 - **Clinical Monitor**: Live status dashboard with active alerts
+- **AI Chatbot Assistant**: 24/7 conversational AI for health questions and guidance
 
 ## 📸 Screenshots
 
 ### Dashboard Overview
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](https://via.placeholder.com/1400x800/0f172a/14b8a6?text=Dashboard+Overview+-+Real-time+Vitals+%26+AI+Insights)
 *Main dashboard showing real-time vitals, AI insights, and predictive analytics*
 
 ### Predictive Analytics
-![Predictive Analytics](screenshots/predictive-analytics.png)
+![Predictive Analytics](https://via.placeholder.com/1400x600/0f172a/14b8a6?text=Predictive+Analytics+-+Recovery+Velocity+%26+7-Day+Forecast)
 *Recovery velocity, complication risk, and 7-day pain forecast*
 
 ### Clinical Monitor
-![Clinical Monitor](screenshots/clinical-monitor.png)
+![Clinical Monitor](https://via.placeholder.com/1400x600/0f172a/14b8a6?text=Clinical+Monitor+-+Live+Vitals+%26+Active+Alerts)
 *Live vitals monitoring with next milestone and active alerts*
 
 ### Health Forecast
-![Health Forecast](screenshots/health-forecast.png)
+![Health Forecast](https://via.placeholder.com/1400x600/0f172a/14b8a6?text=Health+Forecast+-+Recovery+Timeline+%26+Milestones)
 *Recovery timeline with milestone tracking and pain predictions*
 
 ### Risk Assessment
-![Risk Assessment](screenshots/risk-assessment.png)
+![Risk Assessment](https://via.placeholder.com/1400x600/0f172a/14b8a6?text=Risk+Assessment+-+Real-time+Scoring+%26+Factors)
 *Real-time risk scoring with identified risk and protective factors*
 
 ### Medical Report Upload
-![Report Upload](screenshots/report-upload.png)
+![Report Upload](https://via.placeholder.com/1400x600/0f172a/14b8a6?text=Medical+Report+Upload+-+AI+Extraction)
 *AI-powered extraction of vitals from uploaded medical reports*
+
+### AI Chatbot Assistant
+![Chatbot](https://via.placeholder.com/800x600/0f172a/14b8a6?text=AI+Chatbot+-+24/7+Health+Guidance)
+*Conversational AI assistant for health questions, recovery insights, and app navigation*
+
+> **Note**: Replace placeholder images with actual screenshots by following the [Screenshot Guide](screenshots/README.md)
 
 ## 🛠️ Tech Stack
 
@@ -144,7 +151,10 @@ This creates:
 - `GET /history/{user_id}` - Retrieve user's metric history
 
 ### Reports
-- `POST /upload-report` - Upload medical report for AI analysis
+- `POST /upload-report` - Upload medical report for AI
+
+### Chatbot
+- `POST /chat` - Interact with AI health assistant analysis
 - `GET /reports/{user_id}` - Get user's uploaded reports
 
 ### Alerts

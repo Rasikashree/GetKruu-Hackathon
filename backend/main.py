@@ -552,3 +552,147 @@ async def get_reports(user_id: str):
         if "file_base64" in r:
             del r["file_base64"]
     return reports
+
+class ChatMessage(BaseModel):
+    message: str
+    user_name: str
+    latest_metrics: Optional[Dict] = None
+    chat_history: Optional[List[Dict]] = None
+
+@app.post("/chat")
+async def chat_with_ai(chat: ChatMessage):
+    """
+    AI Chatbot endpoint - provides health guidance and answers questions
+    """
+    user_message = chat.message.lower()
+    
+    # Get user's recent data for context
+    cursor = collection.find({"user_id": chat.user_name}).sort("timestamp", -1).limit(10)
+    history = await cursor.to_list(length=10)
+    
+    response = ""
+    
+    # Intent detection and response generation
+    if any(word in user_message for word in ['metric', 'current', 'status', 'reading']):
+        if history and len(history) > 0:
+            latest = history[0]
+            pain = latest.get('pain_level', 'N/A')
+            activity = latest.get('activity_level', 'N/A')
+            hr = latest.get('heart_rate', 'N/A')
+            temp = latest.get('temperature', 'N/A')
+            
+            response = f"Based on your latest readings:\n\n"
+            response += f"🩹 Pain Level: {pain}/10 - "
+            if pain <= 3:
+                response += "Excellent! Pain is well controlled.\n"
+            elif pain <= 6:
+                response += "Moderate pain. Continue monitoring.\n"
+            else:
+                response += "High pain level. Consider consulting your care provider.\n"
+            
+            response += f"🏃 Activity Level: {activity}/10 - "
+            if int(activity) >= 7:
+                response += "Great activity level!\n"
+            elif int(activity) >= 4:
+                response += "Good progress, keep it up.\n"
+            else:
+                response += "Try to increase activity gradually.\n"
+            
+            response += f"💓 Heart Rate: {hr} bpm\n"
+            response += f"🌡️ Temperature: {temp}°C"
+        else:
+            response = "I don't see any recent metrics yet. Log your first daily check-in to start tracking your recovery!"
+    
+    elif any(word in user_message for word in ['progress', 'recovery', 'improve', 'better']):
+        if len(history) >= 3:
+            recent_pain = [h.get('pain_level', 5) for h in history[:3]]
+            avg_pain = sum(recent_pain) / len(recent_pain)
+            trend = "improving" if recent_pain[-1] < recent_pain[0] else "stable" if recent_pain[-1] == recent_pain[0] else "needs attention"
+            
+            response = f"Looking at your last {len(history)} entries:\n\n"
+            response += f"📊 Overall trend: Your recovery is {trend}.\n"
+            
+            if trend == "improving":
+                response += f"✨ Your pain has decreased from {recent_pain[0]} to {recent_pain[-1]}. Keep up the excellent work!\n\n"
+                response += "💡 Tips: Continue your current routine, stay hydrated, and get adequate rest."
+            elif trend == "stable":
+                response += f"📈 Your pain has been steady around {avg_pain:.1f}/10.\n\n"
+                response += "💡 Tips: Consistency is good, but let's work on gradual improvement. Try light stretching and movement."
+            else:
+                response += f"⚠️ I notice your pain has increased. This deserves attention.\n\n"
+                response += "💡 Recommendation: Consider scheduling a check-in with your healthcare provider."
+        else:
+            response = "I need at least 3 days of data to analyze your recovery progress. Keep logging your daily metrics!"
+    
+    elif any(word in user_message for word in ['focus', 'should', 'do', 'recommend', 'advice']):
+        response = "Here are my recommendations for today:\n\n"
+        response += "1️⃣ **Movement**: Aim for gentle activity. Even 10-15 minutes of walking helps circulation.\n\n"
+        response += "2️⃣ **Pain Management**: If pain is above 5/10, take prescribed medication and rest.\n\n"
+        response += "3️⃣ **Hydration**: Drink at least 8 glasses of water to support healing.\n\n"
+        response += "4️⃣ **Monitoring**: Log your metrics daily to help me track your progress.\n\n"
+        response += "5️⃣ **Rest**: Adequate sleep is crucial for recovery."
+    
+    elif any(word in user_message for word in ['when', 'how long', 'recovery time', 'full recovery']):
+        if len(history) >= 5:
+            pain_values = [h.get('pain_level', 5) for h in history[:5]]
+            avg_improvement = (pain_values[0] - pain_values[-1]) / len(pain_values)
+            
+            if avg_improvement > 0:
+                current_pain = pain_values[-1]
+                days_estimate = int(current_pain / avg_improvement) if avg_improvement > 0 else 14
+                
+                response = f"Based on your current progress:\n\n"
+                response += f"📅 Estimated recovery timeline: {days_estimate} days\n\n"
+                response += f"Your pain is improving at approximately {avg_improvement:.1f} points per day. "
+                response += f"At this rate, you should reach minimal pain levels in about {days_estimate} days.\n\n"
+                response += "⚠️ Remember: This is an estimate. Actual recovery varies by individual."
+            else:
+                response = "Your recovery timeline needs more consistent progress data. Focus on daily logging and following your treatment plan."
+        else:
+            response = "I need at least 5 days of data to estimate your recovery timeline. Keep logging daily!"
+    
+    elif any(word in user_message for word in ['pain', 'hurt', 'ache', 'sore']):
+        response = "Understanding pain management:\n\n"
+        response += "🎯 **Pain Scale Guide**:\n"
+        response += "• 0-3: Mild discomfort (normal)\n"
+        response += "• 4-6: Moderate pain (manageable)\n"
+        response += "• 7-10: Severe pain (needs attention)\n\n"
+        response += "💊 **Managing Pain**:\n"
+        response += "• Take prescribed medications on schedule\n"
+        response += "• Apply ice/heat as recommended\n"
+        response += "• Rest when pain increases\n"
+        response += "• Avoid sudden movements\n\n"
+        response += "🚨 **Contact your doctor if**:\n"
+        response += "• Pain suddenly worsens\n"
+        response += "• Pain medication isn't helping\n"
+        response += "• You develop new symptoms"
+    
+    elif any(word in user_message for word in ['upload', 'report', 'lab', 'test', 'results']):
+        response = "📄 **Uploading Medical Reports**:\n\n"
+        response += "1. Click the 'UPLOAD LAB REPORT' button in the Clinical Reports section\n"
+        response += "2. Select your PDF, image, or text file\n"
+        response += "3. The AI will automatically extract vitals (temperature, heart rate, etc.)\n"
+        response += "4. Results appear in your dashboard\n\n"
+        response += "✅ Supported formats: PDF, JPG, PNG, TXT\n\n"
+        response += "💡 Upload blood tests, X-rays, or post-op reports for comprehensive tracking!"
+    
+    elif any(word in user_message for word in ['help', 'how', 'use', 'navigate']):
+        response = "👋 Here's how to use RecoveryGuard:\n\n"
+        response += "📝 **Daily Check-in**: Log pain, activity, and vitals each day\n"
+        response += "📊 **View Analytics**: Check your trends and AI insights\n"
+        response += "📄 **Upload Reports**: Add medical documents for analysis\n"
+        response += "⚠️ **Monitor Alerts**: Watch for system notifications\n"
+        response += "💬 **Ask Me**: I'm here 24/7 for questions!\n\n"
+        response += "What would you like to know more about?"
+    
+    else:
+        # Default helpful response
+        response = f"Hi {chat.user_name}! I'm here to help with:\n\n"
+        response += "• 📊 Understanding your metrics\n"
+        response += "• 📈 Analyzing your recovery progress\n"
+        response += "• 💊 Pain management tips\n"
+        response += "• ⏰ Recovery timeline estimates\n"
+        response += "• 📋 Using the dashboard features\n\n"
+        response += "What would you like to know?"
+    
+    return {"response": response}

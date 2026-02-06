@@ -6,6 +6,7 @@ import ReportAnalysisDisplay from './components/ReportAnalysisDisplay';
 import ClinicalMonitor from './components/ClinicalMonitor';
 import HealthForecast from './components/HealthForecast';
 import RiskAssessment from './components/RiskAssessment';
+import Chatbot from './components/Chatbot';
 import { Activity, Bell, History, Sparkles, PhoneCall, LayoutDashboard, Calendar, Search, User, ShieldCheck } from 'lucide-react';
 
 interface MetricEntry {
@@ -527,6 +528,12 @@ function App() {
           </div>
         </footer>
       </div>
+
+      {/* AI Chatbot Assistant */}
+      <Chatbot 
+        userName={user.full_name || user.username} 
+        latestMetrics={entries.length > 0 ? entries[entries.length - 1] : undefined}
+      />
     </div>
   );
 }
