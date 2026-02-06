@@ -1,3 +1,27 @@
+# RecoveryGuard AI - Post-Operative Recovery Monitoring System
+
+An intelligent healthcare monitoring system that tracks daily recovery metrics using AI-powered trend analysis to identify deviations and alert care providers when reasoned thresholds are crossed.
+
+## 🚀 Features
+
+### 🤖 AI-Powered Monitoring
+- **Baseline Calculation**: Establishes personalized baseline from 7+ days of patient data
+- **Anomaly Detection**: Z-score statistical analysis (2.5σ warning, 3.5σ critical)
+- **Trend Analysis**: Linear regression on pain/activity with confidence scoring
+- **Smart Alerts**: Intelligent alerting logic with multi-factor evaluation
+
+### 📊 Predictive Analytics
+- **Recovery Velocity**: Real-time rate of improvement tracking
+- **7-Day Pain Forecast**: Predicted pain levels with confidence bands
+- **Complication Risk**: AI-calculated probability scoring (0-100%)
+- **Recovery Timeline**: Milestone tracking with estimated completion dates
+
+### 🏥 Clinical Features
+- **Real-Time Vitals**: Pain, heart rate, activity level, temperature monitoring
+- **Medical Report Analysis**: AI extraction of vitals from uploaded lab reports
+- **Risk Assessment**: Dynamic risk scoring with identified factors
+- **Clinical Monitor**: Live status dashboard with active alerts
+- **AI Chatbot Assistant**: 24/7 conversational AI for health questions and guidance
 # Screenshot Guide
 
 This guide will help you capture screenshots for the README.md file.
